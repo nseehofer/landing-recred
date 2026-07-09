@@ -20,8 +20,8 @@
   <header class="navbar">
     <div class="container navbar__inner">
       <a href="#inicio" class="navbar__brand" aria-label="RECRED — Inicio">
-        <img class="navbar__logo" src="assets/logoHeader.png" alt="">
-        <span class="navbar__marca">RECRED</span>
+        <img class="navbar__logo-icon" src="assets/logoHeader.png" alt="" aria-hidden="true">
+        <img class="navbar__logo-text" src="assets/logo.png" alt="RECRED">
       </a>
       <nav class="navbar__nav" aria-label="Navegación principal">
         <a class="navbar__link" href="#beneficios">Beneficios</a>
@@ -253,8 +253,8 @@
     <div class="container footer__inner">
       <div>
         <div class="footer__brand">
-          <img class="footer__logo" src="assets/logoHeader.png" alt="">
-          <span class="footer__marca">RECRED</span>
+          <img class="footer__logo-icon" src="assets/logoHeader.png" alt="" aria-hidden="true">
+          <img class="footer__logo-text" src="assets/logo.png" alt="RECRED">
         </div>
         <p class="footer__texto">
           Buffet escolar inteligente. Menos filas, control real para las familias
@@ -350,6 +350,24 @@
         }
         // Si el valor no es "escuela", el formulario sigue su curso normal (action="#")
       });
+    });
+
+    // Scroll Animations
+    document.addEventListener("DOMContentLoaded", () => {
+      const animatedElements = document.querySelectorAll('.section__titulo, .section__subtitulo, .grupo, .paso, .form, .hero__contenido');
+      
+      animatedElements.forEach(el => el.classList.add('reveal'));
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: "0px 0px -30px 0px" });
+
+      animatedElements.forEach(el => observer.observe(el));
     });
   </script>
 </body>
