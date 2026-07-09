@@ -2,7 +2,7 @@
 
 Landing page del pre-lanzamiento de **RECRED**, un buffet escolar inteligente que permite a alumnos, familias y kioscos gestionar las compras del recreo desde una sola app: sin filas, sin efectivo y con control de restricciones y presupuesto.
 
-Proyecto realizado para la materia **TP Landing Page** de la **Tecnicatura en Desarrollo Web - UNLaM**.
+Proyecto realizado para la materia **TPI** de la **Tecnicatura en Desarrollo Web - UNLaM**.
 
 ## Descripcion
 
