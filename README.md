@@ -38,7 +38,7 @@ landing-recred/
 
 ## Como ejecutarlo
 
-Abri `index.html` directamente en el navegador, o servi la carpeta con cualquier servidor estatico:
+Abri `index.html` directamente en el navegador
 
 ## Autoria
 
