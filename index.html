@@ -278,7 +278,6 @@
   </footer>
 
   <script>
-    // Función para crear y mostrar notificaciones pequeñas
     function mostrarNotificacion(mensaje, exito) {
       const toast = document.createElement('div');
       toast.textContent = mensaje;
@@ -288,7 +287,7 @@
       toast.style.padding = '12px 24px';
       toast.style.borderRadius = '8px';
       toast.style.color = '#fff';
-      toast.style.backgroundColor = exito ? '#10B981' : '#EF4444'; // Verde para éxito, rojo para error
+      toast.style.backgroundColor = exito ? '#10B981' : '#EF4444';
       toast.style.boxShadow = '0 4px 6px rgba(0,0,0,0.1)';
       toast.style.fontFamily = 'Inter, sans-serif';
       toast.style.fontWeight = '500';
@@ -298,10 +297,8 @@
 
       document.body.appendChild(toast);
 
-      // Fade in
       setTimeout(() => { toast.style.opacity = '1'; }, 10);
 
-      // Fade out y remover
       setTimeout(() => {
         toast.style.opacity = '0';
         setTimeout(() => { toast.remove(); }, 300);
@@ -313,10 +310,9 @@
       const emailInput = document.getElementById('email');
 
       form.addEventListener('submit', (e) => {
-        e.preventDefault(); // Evitamos que la página se recargue
+        e.preventDefault();
 
         const email = emailInput.value;
-        // Validación: debe contener un "@" seguido de un dominio con un "."
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
         if (!emailRegex.test(email)) {
@@ -324,19 +320,16 @@
           return;
         }
 
-        // Simulación exitosa sin guardar los datos
         mostrarNotificacion('Solicitud enviada', true);
         form.reset();
-        
-        // Redirigir suavemente al principio de la página
+
         window.scrollTo({ top: 0, behavior: 'smooth' });
       });
     });
 
-    // Scroll Animations
     document.addEventListener("DOMContentLoaded", () => {
       const animatedElements = document.querySelectorAll('.section__titulo, .section__subtitulo, .grupo, .paso, .form, .hero__contenido');
-      
+
       animatedElements.forEach(el => el.classList.add('reveal'));
 
       const observer = new IntersectionObserver((entries) => {
