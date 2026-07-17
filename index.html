@@ -310,45 +310,26 @@
 
     document.addEventListener('DOMContentLoaded', () => {
       const form = document.querySelector('.form');
-      const nombreInput = document.getElementById('nombre');
       const emailInput = document.getElementById('email');
-      const rolSelect = document.getElementById('rol');
 
-      form.addEventListener('submit', async (e) => {
-        if (rolSelect.value === 'escuela') {
-          e.preventDefault();
+      form.addEventListener('submit', (e) => {
+        e.preventDefault(); // Evitamos que la página se recargue
 
-          const data = {
-            schoolName: nombreInput.value,
-            schoolEmail: emailInput.value
-          };
+        const email = emailInput.value;
+        // Validación: debe contener un "@" seguido de un dominio con un "."
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-          try {
-            // Endpoint basado en el contrato
-            const endpoint = 'http://localhost:8080/api/v1/landing-request-school';
-
-            const response = await fetch(endpoint, {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json'
-              },
-              body: JSON.stringify(data)
-            });
-
-            if (response.ok) {
-              mostrarNotificacion('Solicitud enviada', true);
-              form.reset();
-              // Redirigir suavemente al principio de la página
-              window.scrollTo({ top: 0, behavior: 'smooth' });
-            } else {
-              mostrarNotificacion('Hubo un error, volver a intentar', false);
-            }
-          } catch (error) {
-            console.error('Error:', error);
-            mostrarNotificacion('Hubo un error, volver a intentar', false);
-          }
+        if (!emailRegex.test(email)) {
+          mostrarNotificacion('Error: el email debe contener un "@" y un dominio válido', false);
+          return;
         }
-        // Si el valor no es "escuela", el formulario sigue su curso normal (action="#")
+
+        // Simulación exitosa sin guardar los datos
+        mostrarNotificacion('Solicitud enviada', true);
+        form.reset();
+        
+        // Redirigir suavemente al principio de la página
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       });
     });
 
